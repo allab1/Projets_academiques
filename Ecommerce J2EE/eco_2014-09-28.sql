@@ -1,0 +1,412 @@
+# ************************************************************
+# Sequel Pro SQL dump
+# Version 4135
+#
+# http://www.sequelpro.com/
+# http://code.google.com/p/sequel-pro/
+#
+# Host: 127.0.0.1 (MySQL 5.5.34)
+# Database: eco
+# Generation Time: 2014-09-27 23:48:32 +0000
+# ************************************************************
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table ADMIN
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `ADMIN`;
+
+CREATE TABLE `ADMIN` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `USERNAME` varchar(255) DEFAULT NULL,
+  `PASSWORD` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `SECRET` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `USERNAME` (`USERNAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `ADMIN` WRITE;
+/*!40000 ALTER TABLE `ADMIN` DISABLE KEYS */;
+
+INSERT INTO `ADMIN` (`id`, `USERNAME`, `PASSWORD`, `EMAIL`, `SECRET`)
+VALUES
+	(1,'driss','123',NULL,NULL),
+	(3,'admin','123','admin@eco.ma','wanted'),
+	(4,'omar','123','omar@email.com','croco');
+
+/*!40000 ALTER TABLE `ADMIN` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table CATEGORIE
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `CATEGORIE`;
+
+CREATE TABLE `CATEGORIE` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NOM` varchar(255) DEFAULT NULL,
+  `DESCRIPTION` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `CATEGORIE` WRITE;
+/*!40000 ALTER TABLE `CATEGORIE` DISABLE KEYS */;
+
+INSERT INTO `CATEGORIE` (`ID`, `NOM`, `DESCRIPTION`)
+VALUES
+	(11,'cloths',NULL),
+	(12,'accesoire','ring - neckless ...');
+
+/*!40000 ALTER TABLE `CATEGORIE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table COMMAND
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `COMMAND`;
+
+CREATE TABLE `COMMAND` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TOTAL` int(11) DEFAULT NULL,
+  `DATE` datetime DEFAULT NULL,
+  `ID_CLIENT` int(11) DEFAULT NULL,
+  `ID_PANIER` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `COMMAND` WRITE;
+/*!40000 ALTER TABLE `COMMAND` DISABLE KEYS */;
+
+INSERT INTO `COMMAND` (`ID`, `TOTAL`, `DATE`, `ID_CLIENT`, `ID_PANIER`)
+VALUES
+	(2,900,'2014-09-19 12:51:48',4,2),
+	(3,100,'2014-09-19 16:07:03',4,2),
+	(4,500,'2014-09-23 02:19:16',4,2),
+	(5,200,'2014-09-25 13:37:24',4,2);
+
+/*!40000 ALTER TABLE `COMMAND` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table COMMENT
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `COMMENT`;
+
+CREATE TABLE `COMMENT` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_ARTICLE` int(11) DEFAULT NULL,
+  `USER` varchar(255) DEFAULT NULL,
+  `COM` varchar(255) DEFAULT NULL,
+  `TYPE` varchar(255) DEFAULT NULL,
+  `DATE` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `COMMENT` WRITE;
+/*!40000 ALTER TABLE `COMMENT` DISABLE KEYS */;
+
+INSERT INTO `COMMENT` (`ID`, `ID_ARTICLE`, `USER`, `COM`, `TYPE`, `DATE`)
+VALUES
+	(16,8,'driss','belle veste','product','2014-09-07 20:37:04'),
+	(18,16,'driss','looks great','product','2014-09-16 02:07:12');
+
+/*!40000 ALTER TABLE `COMMENT` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table INFORMATION
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `INFORMATION`;
+
+CREATE TABLE `INFORMATION` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` text,
+  `logo` text,
+  `facebook` text,
+  `twitter` text,
+  `email` text,
+  `telephone` text,
+  `addresse` text,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `INFORMATION` WRITE;
+/*!40000 ALTER TABLE `INFORMATION` DISABLE KEYS */;
+
+INSERT INTO `INFORMATION` (`id`, `titre`, `logo`, `facebook`, `twitter`, `email`, `telephone`, `addresse`)
+VALUES
+	(1,'Site Formation',NULL,'fb/formation',NULL,NULL,NULL,'Temara');
+
+/*!40000 ALTER TABLE `INFORMATION` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table LETTER
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `LETTER`;
+
+CREATE TABLE `LETTER` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `USER` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `MESSAGE` varchar(255) DEFAULT NULL,
+  `DATE` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `LETTER` WRITE;
+/*!40000 ALTER TABLE `LETTER` DISABLE KEYS */;
+
+INSERT INTO `LETTER` (`ID`, `USER`, `EMAIL`, `MESSAGE`, `DATE`)
+VALUES
+	(1,'driss','driss@gmail.com','Thanks for you effort','2014-09-08 14:33:36'),
+	(2,'nabil','nabil@gmail.com','bon courage','2014-09-19 16:07:45'),
+	(3,'visiteur','visiteur@mail.com','bon travail','2014-09-23 02:15:19');
+
+/*!40000 ALTER TABLE `LETTER` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table PANART
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `PANART`;
+
+CREATE TABLE `PANART` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_ARTICLE` int(11) DEFAULT NULL,
+  `ID_PANIER` int(11) DEFAULT NULL,
+  `PRIX` float DEFAULT NULL,
+  `QTE` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `PANART` WRITE;
+/*!40000 ALTER TABLE `PANART` DISABLE KEYS */;
+
+INSERT INTO `PANART` (`ID`, `ID_ARTICLE`, `ID_PANIER`, `PRIX`, `QTE`)
+VALUES
+	(1,0,0,23,0);
+
+/*!40000 ALTER TABLE `PANART` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table PANIER
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `PANIER`;
+
+CREATE TABLE `PANIER` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_CLIENT` int(11) DEFAULT NULL,
+  `TOTAL` float DEFAULT NULL,
+  `VALIDATED` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `PANIER` WRITE;
+/*!40000 ALTER TABLE `PANIER` DISABLE KEYS */;
+
+INSERT INTO `PANIER` (`ID`, `ID_CLIENT`, `TOTAL`, `VALIDATED`)
+VALUES
+	(1,20,0,00000000),
+	(2,4,0,00000000),
+	(3,5,0,00000000),
+	(4,6,0,00000000),
+	(5,8,0,00000000),
+	(6,9,0,00000000);
+
+/*!40000 ALTER TABLE `PANIER` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table PHOTO
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `PHOTO`;
+
+CREATE TABLE `PHOTO` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `TYPE_ARTICLE` varchar(255) DEFAULT NULL,
+  `ID_ARTICLE` int(11) DEFAULT NULL,
+  `IMG` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `PHOTO` WRITE;
+/*!40000 ALTER TABLE `PHOTO` DISABLE KEYS */;
+
+INSERT INTO `PHOTO` (`id`, `TYPE_ARTICLE`, `ID_ARTICLE`, `IMG`)
+VALUES
+	(42,'product',16,'1410185058639recommand-3.jpg'),
+	(47,'vehicule',2,'1410966788996r.jpg'),
+	(48,'vehicule',2,'1410966812611fd.jpg'),
+	(49,'vehicule',3,'1410967216227gd.jpg'),
+	(50,'vehicule',4,'1410967683924gd.jpg'),
+	(51,'product',17,'1410967848153image-3.jpg'),
+	(52,'product',18,'1410967943876link-2.jpg'),
+	(53,'vehicule',5,'1411126949814Car Hire.jpg'),
+	(54,'vehicule',5,'1411126977271djf.jpg');
+
+/*!40000 ALTER TABLE `PHOTO` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table PRODUCT
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `PRODUCT`;
+
+CREATE TABLE `PRODUCT` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CATEGORY` varchar(255) DEFAULT NULL,
+  `MARQUE` varchar(255) DEFAULT NULL,
+  `NOM` varchar(255) DEFAULT NULL,
+  `DESCRIPTION` varchar(255) DEFAULT NULL,
+  `QUANTITY` int(11) DEFAULT NULL,
+  `PRICE` float DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `ID` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `PRODUCT` WRITE;
+/*!40000 ALTER TABLE `PRODUCT` DISABLE KEYS */;
+
+INSERT INTO `PRODUCT` (`ID`, `CATEGORY`, `MARQUE`, `NOM`, `DESCRIPTION`, `QUANTITY`, `PRICE`)
+VALUES
+	(16,'accesoire','ZARA','braclet','golden',30,100),
+	(17,'cloths','zara','robe','',30,300),
+	(18,'cloths','H&M','Jackette','',10,1200);
+
+/*!40000 ALTER TABLE `PRODUCT` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table RESORT
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `RESORT`;
+
+CREATE TABLE `RESORT` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_ARTICLE` int(11) DEFAULT NULL,
+  `ID_CLIENT` int(11) DEFAULT NULL,
+  `NBJOUR` int(11) DEFAULT NULL,
+  `RESORTDAY` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `RESORT` WRITE;
+/*!40000 ALTER TABLE `RESORT` DISABLE KEYS */;
+
+INSERT INTO `RESORT` (`ID`, `ID_ARTICLE`, `ID_CLIENT`, `NBJOUR`, `RESORTDAY`)
+VALUES
+	(12,32,4,1,'2014-09-05 10:45:19'),
+	(13,2,4,1,'2014-09-17 16:33:51'),
+	(14,2,4,1,'2014-09-17 16:34:10'),
+	(15,4,4,1,'2014-09-19 16:06:36'),
+	(16,2,4,10,'2014-09-23 02:20:11'),
+	(17,2,4,1,'2014-09-23 02:28:32'),
+	(18,2,4,1,'2014-09-23 22:14:38');
+
+/*!40000 ALTER TABLE `RESORT` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table UTILISATEUR
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `UTILISATEUR`;
+
+CREATE TABLE `UTILISATEUR` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `USERNAME` varchar(255) DEFAULT NULL,
+  `PASSWORD` varchar(255) DEFAULT NULL,
+  `NUM` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `ADRESSE` varchar(255) DEFAULT NULL,
+  `CIN` varchar(255) DEFAULT NULL,
+  `NOM` varchar(255) DEFAULT NULL,
+  `QUESTION` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `USERNAME` (`USERNAME`),
+  UNIQUE KEY `CIN` (`CIN`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `UTILISATEUR` WRITE;
+/*!40000 ALTER TABLE `UTILISATEUR` DISABLE KEYS */;
+
+INSERT INTO `UTILISATEUR` (`id`, `USERNAME`, `PASSWORD`, `NUM`, `EMAIL`, `ADRESSE`, `CIN`, `NOM`, `QUESTION`)
+VALUES
+	(4,'kamal','1234','343','d@ed.d',NULL,'ed323','dd','hanan'),
+	(6,'omar','123','065433442','j@ja.a',NULL,'G45354','omar','titanic');
+
+/*!40000 ALTER TABLE `UTILISATEUR` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table VEHICULE
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `VEHICULE`;
+
+CREATE TABLE `VEHICULE` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `MARQUE` varchar(255) DEFAULT NULL,
+  `YEAR` int(11) DEFAULT NULL,
+  `PLAQUE` varchar(255) DEFAULT NULL,
+  `COULEUR` varchar(255) DEFAULT NULL,
+  `CARBURANT` varchar(255) DEFAULT NULL,
+  `MODEL` varchar(255) DEFAULT NULL,
+  `KM` bigint(20) DEFAULT NULL,
+  `TRANSMISSION` varchar(255) DEFAULT NULL,
+  `PLACES` int(11) DEFAULT NULL,
+  `AVAILABLE` bit(1) DEFAULT NULL,
+  `REPARATION` bit(1) DEFAULT NULL,
+  `PRIX` float DEFAULT NULL,
+  `DESCRIPTION` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `PLAQUE` (`PLAQUE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `VEHICULE` WRITE;
+/*!40000 ALTER TABLE `VEHICULE` DISABLE KEYS */;
+
+INSERT INTO `VEHICULE` (`id`, `MARQUE`, `YEAR`, `PLAQUE`, `COULEUR`, `CARBURANT`, `MODEL`, `KM`, `TRANSMISSION`, `PLACES`, `AVAILABLE`, `REPARATION`, `PRIX`, `DESCRIPTION`)
+VALUES
+	(2,'mercedec',2000,'A30',NULL,'turbo','4 x 4',4994,'man',6,00000001,00000000,450,''),
+	(4,'Renault',2000,'A3423','#1f5b7f','turbo','4 x 4',0,'man',5,00000001,00000000,700,''),
+	(5,'Toyota',2002,'B4533','#b1b264','turbo','Crolla',998374,'man',4,00000001,00000000,400,'');
+
+/*!40000 ALTER TABLE `VEHICULE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
